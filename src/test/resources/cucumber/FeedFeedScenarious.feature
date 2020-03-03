@@ -14,13 +14,6 @@ Feature: FeedFeed testing
     Examples:
       | count |
       | 1     |
-      | 1     |
-      | 1     |
-      | 1     |
-      | 1     |
-      | 1     |
-      | 1     |
-      | 1     |
 
   Scenario: Test Home Page block
     When I get My FeedFeed block info and save it
