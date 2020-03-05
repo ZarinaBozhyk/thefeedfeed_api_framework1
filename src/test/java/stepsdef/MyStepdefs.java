@@ -1,10 +1,13 @@
 package stepsdef;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import feed.Feeds;
 import feed.ImageInformation;
 import feed.Profiles;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import pageobjects.FeedsService;
@@ -20,6 +23,8 @@ public class MyStepdefs {
     private Feeds feeds;
     private FeedsService feedsService = new FeedsService();
     private HomepageService homepageService = new HomepageService();
+
+    private final static Logger logger = LoggerFactory.getLogger(MyStepdefs.class);
 
     //<editor-fold desc="When">
     @When("^I get pies recipe information and save it$")
@@ -44,6 +49,7 @@ public class MyStepdefs {
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException(String.format("There is no item with rating more than '%s'", rating)));
         Assert.assertTrue(Double.parseDouble(imageInformation.getRating()) > rating);
+        logger.error("Test error log");
     }
 
     @Then("^I check at least one recipe has pies:$")
@@ -57,6 +63,7 @@ public class MyStepdefs {
                         softAssert.assertTrue(listPies.contains(actualName), String.format("List does not contain element %s", actualName))
                 );
         softAssert.assertAll();
+        logger.info(String.format("Got the list of recipes: %s", listPies));
     }
 
     @Then("^I check username is equal to main url$")
@@ -81,6 +88,37 @@ public class MyStepdefs {
                 .map(element -> element.getImage().getUpdatedAt())
                 .collect(Collectors.toList());
         Assert.assertTrue(createdData.containsAll(updatedData), String.format("CreatedData '%s' is not equal to createdData'%s'", createdData, updatedData));
+        logger.warn("Test warn log");
+    }
+
+    @When("^I ask it to say add$")
+    public void iAskItToSayAdd() {
+    }
+
+    @Given("^I have a calc with numbers$")
+    public void iHaveACalcWithNumbers() {
+    }
+
+    @Then("^it should answer with add result$")
+    public void itShouldAnswerWithAddResult() {
+    }
+
+    int a, b,sum;
+    @Given("^I have variable a$")
+    public void i_have_variable_a()  {
+        a = 3;
+    }
+    @Given("^I have variable b$")
+    public void i_have_variable_b()  {
+        b = 4;
+    }
+    @When("^I add a and b$")
+    public void i_add_a_and_b() {
+        sum = a + b;
+    }
+    @Then("^I display the sum$")
+    public void i_display_the_sum()  {
+        System.out.println("Sum is "+sum);
     }
     //</editor-fold>
 }
