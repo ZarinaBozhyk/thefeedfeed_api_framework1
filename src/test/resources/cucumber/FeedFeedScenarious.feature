@@ -22,14 +22,13 @@ Feature: FeedFeed testing
       | Coconut Pies               |
       | Cranberry Pies & Tarts     |
       | Cream Pies                 |
-      | Pear Pies                  |
+      | Pears Pies                 |
       | Pecan Pie                  |
       | Rhubarb Pies               |
       | Sweet Potato & Squash Pies |
     Examples:
       | count |
       | 1     |
-      | 1000  |
 
   Scenario: Test Home Page block
     When I get My FeedFeed block info and save it
