@@ -65,7 +65,7 @@
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
+            <artifactId>allure-cucumber2-jvm</artifactId>
             <version>${allure-testng.version}</version>
         </dependency>
 
